@@ -3,14 +3,14 @@
 
 import re
 import json
-import urllib.request
+from urllib.request import urlopen, Request
 import os
 import csv
 import operator
 
 codeforces = {}
-url = urllib.request.urlopen("https://codeforces.com/api/problemset.problems")
-context = json.loads(url.read())
+req = Request(url="https://codeforces.com/api/problemset.problems", headers={'User-Agent': 'Mozilla/5.0'})
+context = json.loads(urlopen(req).read())
 for i, j in zip(context['result']['problems'], context['result']['problemStatistics']):
     contestId = i['contestId']
     index = i['index']
@@ -26,9 +26,8 @@ for i, j in zip(context['result']['problems'], context['result']['problemStatist
                              'rating': rating, 'solved': j['solvedCount'], 'accepted': 0, }
 
 # 用户昵称根据需求进行更改，默认是托老爷的
-url = urllib.request.urlopen(
-    "https://codeforces.com/api/user.status?handle=tourist")
-context = json.loads(url.read())
+req = Request(url="https://codeforces.com/api/user.status?handle=tourist", headers={'User-Agent': 'Mozilla/5.0'})
+context = json.loads(urlopen(req).read())
 for i in context['result']:
     if i['verdict'] == 'OK':
         contestId = i['problem']['contestId']

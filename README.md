@@ -29,7 +29,7 @@ codeforces.py爬取Problemset中的所有题目并制作csv表，datavisual.py�
 ## 坑
 
 1. 用户状态里AC题目所对应的verdict是"OK"，其他WA、RE、TLE什么的没变
-2. 截至2020.4.10只有[Contest921](https://codeforces.com/contest/921)中的题目ID不符合“数字+字母（+数字）”的格式而是“数字+数字”，我决定直接把这个奇葩的比赛跳过去
+2. 截至2024.1.18只有[Contest921](https://codeforces.com/contest/921)中的题目ID不符合“数字+字母（+数字）”的格式而是“数字+数字”，我决定直接把这个奇葩的比赛跳过去
 3. 返回的用户状态是指定用户的所有提交记录，那么这就意味着有可能出现Problemset中没有的题（比如在Gym里交过题）
 4. 有些题目由于比较新或其他原因没有rating，我把这些题的默认rating设为1500
 5. 绘图的大小分辨率是手调出来的
